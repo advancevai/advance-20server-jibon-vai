@@ -1,0 +1,1 @@
+import{n as e}from"./index-CfzYKo_M.js";var t=e();function n(){return(0,t.jsx)(`iframe`,{src:`/sb/index.html`,title:`RJ COMMUNITY`,className:`fixed inset-0 h-full w-full border-0`,allow:`clipboard-write; fullscreen`})}export{n as component};

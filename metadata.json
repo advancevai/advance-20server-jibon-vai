@@ -1,0 +1,8 @@
+{
+  "name": "Remix RJ COMMUNITY — AI Signal Dashboard",
+  "description": "AI-powered prediction signal dashboard for Wingo, K3, 5D, and TRX games with live countdowns, multi-engine analytics, and access controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

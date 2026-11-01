@@ -1,0 +1,497 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #02030A;
+  --bg-dark: #02030A;
+  --bg-navy: #050B18;
+  --bg-purple: #0B0618;
+  --neon-blue: #00B7FF;
+  --neon-cyan: #00FFFF;
+  --neon-purple: #A020F0;
+  --neon-violet: #7200FF;
+  --neon-pink: #FF20C8;
+  --neon-green: #00FFA3;
+  --neon-gold: #FFC83D;
+  --neon-orange: #FFB000;
+  --color-big: #00E5A8;
+  --color-small: #B45CFF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-tertiary: #64748B;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+  --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --ab-angle: 0deg;
+}
+
+body {
+  background-color: #02030A;
+  color: #FFFFFF;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ========================================================
+   1. MULTICOLOR AURORA BLACK ANIMATED BACKGROUND
+   ======================================================== */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 10%, #0B0618 0%, #050B18 40%, #02030A 80%);
+}
+
+/* Moving Cyber Grid Overlay */
+.aurora-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(114, 0, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 183, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: auroraGridShift 25s linear infinite;
+  opacity: 0.75;
+}
+
+@keyframes auroraGridShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 32px 32px;
+  }
+}
+
+/* Aurora Wave Glows */
+.aurora-wave {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(85px);
+  will-change: transform, opacity;
+  animation: auroraFloat 18s ease-in-out infinite alternate;
+}
+
+/* Wave 1: Electric Blue & Cyan (Top Left & Behind Wingo) */
+.aurora-wave-1 {
+  top: -10%;
+  left: -15%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #00B7FF 0%, #00FFFF 35%, transparent 70%);
+  opacity: 0.35;
+  animation-duration: 20s;
+}
+
+/* Wave 2: Neon Purple & Electric Violet (Top Center & Header) */
+.aurora-wave-2 {
+  top: 5%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #A020F0 0%, #7200FF 40%, transparent 70%);
+  opacity: 0.32;
+  animation-duration: 24s;
+  animation-delay: -4s;
+}
+
+/* Wave 3: Golden Orange & Amber (Behind K3 & Pro Traders) */
+.aurora-wave-3 {
+  top: 35%;
+  left: 10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #FFB000 0%, #FF5500 35%, transparent 70%);
+  opacity: 0.24;
+  animation-duration: 19s;
+  animation-delay: -8s;
+}
+
+/* Wave 4: Hot Pink & Magenta (Behind 5D) */
+.aurora-wave-4 {
+  top: 50%;
+  right: 5%;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, #FF20C8 0%, #A020F0 40%, transparent 70%);
+  opacity: 0.28;
+  animation-duration: 22s;
+  animation-delay: -12s;
+}
+
+/* Wave 5: Emerald Green & Cyan (Behind TRX & Bottom) */
+.aurora-wave-5 {
+  bottom: 5%;
+  left: -5%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, #00FFA3 0%, #00B7FF 40%, transparent 70%);
+  opacity: 0.3;
+  animation-duration: 25s;
+  animation-delay: -16s;
+}
+
+@keyframes auroraFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate3d(30px, 35px, 0) scale(1.15);
+    opacity: 0.38;
+  }
+  100% {
+    transform: translate3d(-25px, -30px, 0) scale(0.95);
+    opacity: 0.25;
+  }
+}
+
+/* Floating Neon Particles */
+.aurora-particle {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: particleFloat 12s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ========================================================
+   2. GLASS & CARD STYLES
+   ======================================================== */
+.cyber-card {
+  background: rgba(11, 7, 24, 0.9);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(160, 32, 240, 0.3);
+  border-radius: 16px;
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+    0 8px 32px -8px rgba(2, 3, 10, 0.95),
+    0 0 20px -4px rgba(114, 0, 255, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-card:hover {
+  border-color: rgba(0, 183, 255, 0.5);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+    0 12px 36px -8px rgba(0, 0, 0, 0.98),
+    0 0 26px 0 rgba(0, 183, 255, 0.35);
+}
+
+/* Conic Rotating Neon Borders */
+@property --ab-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes ab-spin {
+  to {
+    --ab-angle: 360deg;
+  }
+}
+
+.anim-border-neon {
+  position: relative;
+  background: conic-gradient(
+    from var(--ab-angle, 0deg),
+    transparent 0deg,
+    #7200FF 50deg,
+    #00B7FF 110deg,
+    #00FFA3 160deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  border-radius: 16px;
+  padding: 1.5px;
+  animation: ab-spin 4s linear infinite;
+}
+
+.anim-border-gold {
+  position: relative;
+  background: conic-gradient(
+    from var(--ab-angle, 0deg),
+    transparent 0deg,
+    #FFC83D 60deg,
+    #FF9500 120deg,
+    #FFE270 170deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  border-radius: 16px;
+  padding: 1.5px;
+  animation: ab-spin 3.5s linear infinite;
+}
+
+/* ========================================================
+   3. ANIMATIONS & LIGHT EFFECTS
+   ======================================================== */
+@keyframes neonBreathing {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(114, 0, 255, 0.45), inset 0 0 8px rgba(114, 0, 255, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(160, 32, 240, 0.75), inset 0 0 14px rgba(0, 183, 255, 0.35);
+  }
+}
+
+.animate-neon-breathing {
+  animation: neonBreathing 3s ease-in-out infinite;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.65;
+  }
+}
+
+.animate-live-dot {
+  animation: liveDotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 200, 61, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(255, 200, 61, 0.85);
+  }
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3s ease-in-out infinite;
+}
+
+@keyframes lightSweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  30%, 100% {
+    transform: translateX(250%) skewX(-25deg);
+  }
+}
+
+.vip-card-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 200, 61, 0.03) 25%,
+    rgba(255, 200, 61, 0.25) 50%,
+    rgba(255, 200, 61, 0.03) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: lightSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-8px);
+  }
+  40%, 80% {
+    transform: translateX(8px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(0, 183, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(114, 0, 255, 0.8);
+  }
+}
+
+.animate-text-glow {
+  animation: textGlow 3.5s ease-in-out infinite;
+}
+
+/* Wing Animation */
+@keyframes wingFlap {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+}
+
+.animate-wings-left {
+  animation: wingFlap 2.8s ease-in-out infinite;
+  transform-origin: right center;
+}
+
+.animate-wings-right {
+  animation: wingFlap 2.8s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02030A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(114, 0, 255, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 183, 255, 0.6);
+}
+
+/* ========================================================
+   4. LEADERBOARD RANKING ANIMATIONS
+   ======================================================== */
+@keyframes goldShineSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  25%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.gold-shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-shine-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 200, 61, 0.04) 30%,
+    rgba(255, 200, 61, 0.28) 50%,
+    rgba(255, 200, 61, 0.04) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: goldShineSweep 3.8s ease-in-out infinite;
+}
+
+@keyframes fireStreakPulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(255, 176, 0, 0.35), inset 0 0 8px rgba(255, 100, 0, 0.2);
+    border-color: rgba(255, 176, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 176, 0, 0.65), inset 0 0 14px rgba(255, 120, 0, 0.35);
+    border-color: rgba(255, 200, 61, 0.95);
+  }
+}
+
+.animate-streak-fire {
+  animation: fireStreakPulse 2.2s ease-in-out infinite;
+}
+
+/* ========================================================
+   5. SIGNAL PREDICTION BADGES (BIG: #00E5A8, SMALL: #B45CFF)
+   ======================================================== */
+.signal-big {
+  background: rgba(0, 229, 168, 0.16) !important;
+  color: #00E5A8 !important;
+  border-color: #00E5A8 !important;
+  box-shadow: 0 0 24px rgba(0, 229, 168, 0.45), inset 0 0 12px rgba(0, 229, 168, 0.2) !important;
+  text-shadow: 0 0 14px rgba(0, 229, 168, 0.75);
+}
+
+.signal-small {
+  background: rgba(180, 92, 255, 0.16) !important;
+  color: #B45CFF !important;
+  border-color: #B45CFF !important;
+  box-shadow: 0 0 24px rgba(180, 92, 255, 0.45), inset 0 0 12px rgba(180, 92, 255, 0.2) !important;
+  text-shadow: 0 0 14px rgba(180, 92, 255, 0.75);
+}
+
+.signal-even {
+  background: rgba(0, 255, 163, 0.16) !important;
+  color: #00FFA3 !important;
+  border-color: #00FFA3 !important;
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.35) !important;
+}
+
+.signal-odd {
+  background: rgba(255, 200, 61, 0.16) !important;
+  color: #FFC83D !important;
+  border-color: #FFC83D !important;
+  box-shadow: 0 0 20px rgba(255, 200, 61, 0.35) !important;
+}
+
+.signal-red {
+  background: rgba(255, 43, 94, 0.16) !important;
+  color: #FF2B5E !important;
+  border-color: #FF2B5E !important;
+  box-shadow: 0 0 20px rgba(255, 43, 94, 0.35) !important;
+}
+
+.signal-green {
+  background: rgba(0, 255, 163, 0.16) !important;
+  color: #00FFA3 !important;
+  border-color: #00FFA3 !important;
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.35) !important;
+}
